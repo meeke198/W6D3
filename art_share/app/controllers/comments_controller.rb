@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
 
     def index
         if params[:user_id]
-            @comments = Comment.where("comments.commenter_id = #{params[:user_id]}")   
+            @comments = Comment.where("comments.commenter_id = #{params[:user_id]}")
         elsif params[:artwork_id]
             @comments = Comment.where("comments.artwork_id = #{params[:artwork_id]}")
         else
-            @comments= Comment.all 
+            @comments= Comment.all
         end
         render json: @comments
     end
@@ -19,7 +19,6 @@ class CommentsController < ApplicationController
             render json: @comment.errors.full_messages, status: :unprocessable_entity
         end
     end
-
 
   def destroy
     @comment = Comment.find(params[:id])
