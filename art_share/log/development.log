@@ -945,3 +945,96 @@ Migrating to CreateComments (20210916200548)
   ↳ bin/rails:9
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /home/emmay/.rbenv/versions/2.5.1/bin/annotate:23
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE DATABASE "art_share_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE DATABASE "art_share_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1682527628878363470)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20210916200548)
+  [1m[35m (24.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (115.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "commenter_id" integer NOT NULL, "artwork_id" integer NOT NULL, "body" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210916200548_create_comments.rb:3
+  [1m[35m (29.0ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_commenter_id" ON "comments"  ("commenter_id")[0m
+  ↳ db/migrate/20210916200548_create_comments.rb:9
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_artwork_id" ON "comments"  ("artwork_id")[0m
+  ↳ db/migrate/20210916200548_create_comments.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (21.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210916200548"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (16.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(1682527628878363470)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started POST "/comments" for ::1 at 2021-09-16 16:40:12 -0400
+  [1m[35m (45.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/hienthu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+LoadError - Unable to autoload constant CommentsController, expected /Users/hienthu/Documents/M2/appacademy_W6D3/art_share/app/controllers/comments_controller.rb to define it:
+
+Started POST "/comments" for ::1 at 2021-09-16 16:41:51 -0400
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"commenter_id"=>"1", "artwork_id"=>"2", "body"=>"great work Emmay!!!!!"}}
+Completed 500 Internal Server Error in 294ms (ActiveRecord: 144.8ms)
+
+
+
+ActiveRecord::AssociationTypeMismatch - Artwork(#70319316155040) expected, got "2" which is an instance of String(#70319318892060):
+  app/controllers/comments_controller.rb:15:in `create'
+
+Started POST "/comments" for ::1 at 2021-09-16 16:56:23 -0400
+  [1m[35m (44.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/hienthu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"commenter_id"=>"1", "artwork_id"=>"2", "body"=>"great work Emmay!!!!!"}}
+Completed 500 Internal Server Error in 344ms (ActiveRecord: 97.2ms)
+
+
+
+ActiveRecord::AssociationTypeMismatch - Artwork(#70349722719760) expected, got "2" which is an instance of String(#70349714947620):
+  app/controllers/comments_controller.rb:15:in `create'
+
+Started POST "/comments" for ::1 at 2021-09-16 17:04:57 -0400
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"commenter_id"=>"1", "artwork_id"=>"2", "body"=>"great work Emmay!!!!!"}}
+  [1m[35m (27.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:16
+  [1m[36mUser Load (33.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:16
+  [1m[36mArtwork Load (4.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:16
+  [1m[36mComment Create (88.4ms)[0m  [1m[32mINSERT INTO "comments" ("commenter_id", "artwork_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["commenter_id", 1], ["artwork_id", 2], ["body", "great work Emmay!!!!!"], ["created_at", "2021-09-16 21:04:58.329735"], ["updated_at", "2021-09-16 21:04:58.329735"]]
+  ↳ app/controllers/comments_controller.rb:16
+  [1m[35m (15.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:16
+Completed 200 OK in 720ms (Views: 7.8ms | ActiveRecord: 507.1ms)
+
+
+Started GET "/users/1/comments" for ::1 at 2021-09-16 17:06:37 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mComment Load (37.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE (comments.commenter_id = 1)[0m
+  ↳ app/controllers/comments_controller.rb:11
+Completed 200 OK in 275ms (Views: 33.2ms | ActiveRecord: 219.3ms)
+
+
+Started GET "/artworks/2/comments" for ::1 at 2021-09-16 17:06:54 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"artwork_id"=>"2"}
+  [1m[36mComment Load (42.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE (comments.artwork_id = 2)[0m
+  ↳ app/controllers/comments_controller.rb:11
+Completed 200 OK in 45ms (Views: 1.7ms | ActiveRecord: 42.2ms)
+
+

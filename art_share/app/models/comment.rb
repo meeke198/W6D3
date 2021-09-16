@@ -17,7 +17,7 @@ class Comment < ApplicationRecord
     foreign_key: :commenter_id,
     class_name: :User
 
-  belongs_to :artwork_id,
+  belongs_to :artwork,
     primary_key: :id,
     foreign_key: :artwork_id,
     class_name: :Artwork
