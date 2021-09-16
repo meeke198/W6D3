@@ -380,3 +380,200 @@ Migrating to AddIndexToArtworkshare (20210916140134)
   ↳ bin/rails:9
   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1682527628878363470)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddIndexToArtworkshare (20210916140134)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (50.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_artwork_shares_on_artwork_id_and_viewer_id" ON "artwork_shares"  ("artwork_id", "viewer_id")[0m
+  ↳ db/migrate/20210916140134_add_index_to_artworkshare.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210916140134"]]
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (9.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1682527628878363470)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started POST "/users" for ::1 at 2021-09-16 11:43:57 -0400
+  [1m[35m (13.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/emmay/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"hien123"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/users" for ::1 at 2021-09-16 11:45:36 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"hien123"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (15.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "hien123"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "hien123"], ["created_at", "2021-09-16 15:45:36.678081"], ["updated_at", "2021-09-16 15:45:36.678081"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 99ms (Views: 0.7ms | ActiveRecord: 46.0ms)
+
+
+Started GET "/users" for ::1 at 2021-09-16 11:45:59 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"username"=>"hien123"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 17ms (Views: 5.9ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/users" for ::1 at 2021-09-16 11:46:31 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"emmay123"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "emmay123"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "emmay123"], ["created_at", "2021-09-16 15:46:31.387056"], ["updated_at", "2021-09-16 15:46:31.387056"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/users" for ::1 at 2021-09-16 11:46:35 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"username"=>"emmay123"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2021-09-16 11:46:56 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"evan123"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "evan123"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "evan123"], ["created_at", "2021-09-16 15:46:56.118782"], ["updated_at", "2021-09-16 15:46:56.118782"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/users" for ::1 at 2021-09-16 11:47:00 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"username"=>"evan123"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artworks" for ::1 at 2021-09-16 11:47:30 -0400
+Processing by ArtworksController#index as */*
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `artwork' for #<ArtworksController:0x00007fffd32e3b70>
+Did you mean?  artwork_url:
+  app/controllers/artworks_controller.rb:4:in `index'
+
+Started GET "/artworks" for ::1 at 2021-09-16 11:48:05 -0400
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (18.0ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  ↳ app/controllers/artworks_controller.rb:5
+Completed 200 OK in 47ms (Views: 1.2ms | ActiveRecord: 19.2ms)
+
+
+Started POST "/artworks" for ::1 at 2021-09-16 11:49:37 -0400
+Processing by ArtworksController#create as */*
+  Parameters: {"artwork"=>{"title"=>"Mona Lisa", "image_url"=>"monalisa@art.com", "artist_id"=>"1"}}
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `artwork' for #<ArtworksController:0x00007ff938077a18>
+Did you mean?  artwork_url:
+  app/controllers/artworks_controller.rb:9:in `create'
+
+Started POST "/artworks" for ::1 at 2021-09-16 11:50:06 -0400
+Processing by ArtworksController#create as */*
+  Parameters: {"artwork"=>{"title"=>"Mona Lisa", "image_url"=>"monalisa@art.com", "artist_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mArtwork Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Mona Lisa"], ["artist_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mArtwork Create (0.9ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "image_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Mona Lisa"], ["image_url", "monalisa@art.com"], ["artist_id", 1], ["created_at", "2021-09-16 15:50:06.196734"], ["updated_at", "2021-09-16 15:50:06.196734"]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artworks_controller.rb:10
+Completed 200 OK in 89ms (Views: 0.5ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/artworks" for ::1 at 2021-09-16 11:50:12 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork"=>{"title"=>"Mona Lisa", "image_url"=>"monalisa@art.com", "artist_id"=>"1"}}
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  ↳ app/controllers/artworks_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/artworks" for ::1 at 2021-09-16 11:51:34 -0400
+Processing by ArtworksController#create as */*
+  Parameters: {"artwork"=>{"title"=>"Better Mona Lisa", "image_url"=>"bettermonalisa@art.com"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mArtwork Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" IS NULL LIMIT $2[0m  [["title", "Better Mona Lisa"], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/artworks_controller.rb:10
+Completed 422 Unprocessable Entity in 130ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/artworks" for ::1 at 2021-09-16 11:52:09 -0400
+Processing by ArtworksController#create as */*
+  Parameters: {"artwork"=>{"title"=>"Mona Lisa", "image_url"=>"monalisa@art.com", "artist_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mArtwork Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Mona Lisa"], ["artist_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/artworks_controller.rb:10
+Completed 422 Unprocessable Entity in 40ms (Views: 0.5ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/artworks" for ::1 at 2021-09-16 11:53:57 -0400
+Processing by ArtworksController#create as */*
+  Parameters: {"artwork"=>{"title"=>"Mona Lisa", "image_url"=>"mymonalisa@art.com", "artist_id"=>"2"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mArtwork Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Mona Lisa"], ["artist_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[36mArtwork Create (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "image_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Mona Lisa"], ["image_url", "mymonalisa@art.com"], ["artist_id", 2], ["created_at", "2021-09-16 15:53:57.169748"], ["updated_at", "2021-09-16 15:53:57.169748"]]
+  ↳ app/controllers/artworks_controller.rb:10
+  [1m[35m (42.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artworks_controller.rb:10
+Completed 200 OK in 60ms (Views: 0.5ms | ActiveRecord: 45.8ms)
+
+
