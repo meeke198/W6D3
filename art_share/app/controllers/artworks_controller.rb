@@ -1,7 +1,14 @@
 class ArtworksController < ApplicationController
 
   def index
-    @artworks = Artwork.all
+    # debugger
+    if params[:user_id]
+    # @artworks = Artwork.all
+
+      @artworks = Artwork.left_outer_joins(:shares).where("artworks.artist_id = #{params[:user_id]} OR artwork_shares.viewer_id = #{params[:user_id]}")
+    else
+      @artworks = Artwork.all
+    end
     render json: @artworks
   end
 
